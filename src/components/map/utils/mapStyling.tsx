@@ -1,3 +1,17 @@
+import { PathOptions } from 'leaflet';
+import { Feature } from 'geojson';
+import { BoundaryProperties, FaultLineProperties, PlateProperties } from '../layers/layerTypes';
+
+
+
+
+/**
+ * Generic styler for safety. Returns a default style if a feature is malformed.
+ */
+const defaultStyle: PathOptions = {
+    color: '#9E9E9E', // Neutral Grey
+    weight: 1,
+};
 /**
  * Generates a simple, deterministic hex color from a string seed (e.g., a plate name).
  */
@@ -27,6 +41,26 @@ export const getBaseColorForSens1 = (sens1: string): string => {
         default: return '#9E9E9E'; // Neutral Grey for unknowns
     }
 };
+
+
+/**
+ * Assigns a color based on the boundary type encoded in the "Name" property.
+ * @param name The "Name" property from the GeoJSON (e.g., "AF-AN").
+ * @returns A hex color string.
+ */
+const getColorFromBoundaryName = (name: string): string => {
+    // Check for subduction zones (collision)
+    if (name.includes('/') || name.includes('\\')) {
+        return '#FF0000'; // Red for Subduction
+    }
+    // All other types (ridges, transforms) are non-subducting
+    if (name.includes('-')) {
+        return '#0000FF'; // Blue for Non-Subduction (Ridges/Transforms)
+    }
+    // Default color if format is unexpected
+    return '#FFFFFF'; // White
+};
+
 
 /**
  * Darkens or lightens a hex color by a given percentage.
@@ -61,4 +95,64 @@ export const getColorForFault = (sens1: string, rate: string): string => {
         case '3': return adjustColor(baseColor, -0.5); // Low -> 50% Darker
         default: return adjustColor(baseColor, -0.7); // Unknown Rate -> Very dark
     }
+};
+
+
+
+/**
+ * Styles a Fault Line feature. Accepts a generic Feature, as required by react-leaflet.
+ */
+export const faultLineStyler = (feature?: Feature): PathOptions => {
+    // Safety check for undefined features or properties
+    if (!feature?.properties) {
+        return defaultStyle;
+    }
+
+    // Type Assertion: We tell TypeScript to treat properties as our specific type.
+    const props = feature.properties as FaultLineProperties;
+
+    // This now works without type errors
+    return {
+        color: getColorForFault(props.SENS1, props.RATE),
+        weight: 2.4,
+    };
+};
+
+/**
+ * Styles a Plate Boundary feature.
+ */
+export const boundaryStyler = (feature?: Feature): PathOptions => {
+    if (!feature?.properties) {
+        return defaultStyle;
+    }
+
+    const props = feature.properties as BoundaryProperties;
+
+    return {
+        color: getColorFromBoundaryName(props.Name),
+        weight: 2,
+        opacity: 0.9,
+    };
+};
+
+/**
+ * Styles a Tectonic Plate feature.
+ */
+export const plateStyler = (feature?: Feature): PathOptions => {
+    if (!feature?.properties) {
+        return defaultStyle;
+    }
+
+    const props = feature.properties as PlateProperties;
+
+    const name = props.PlateName || 'UnknownPlate';
+    const color = getRandomColor(name);
+
+    return {
+        color: color,
+        weight: 1.2,
+        opacity: 0.6,
+        fillColor: color,
+        fillOpacity: 0.15,
+    };
 };

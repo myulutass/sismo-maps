@@ -37,7 +37,6 @@ import PlateBoundariesInfo from '../components/map/layerInfo/PlateBoundariesInfo
 import TectonicPlatesInfo from '../components/map/layerInfo/TectonicPatesInfo';
 
 const Tab2: React.FC = () => {
-  const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
 
   const [isLegendOpen, setIsLegendOpen] = useState(false);
   const [layerVisibility, setLayerVisibility] = useState({
@@ -103,7 +102,6 @@ const Tab2: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen>
         <MapComponent
-          apiKey={GOOGLE_MAPS_API_KEY}
           layerVisibility={layerVisibility}
           onLoadingChange={handleLoadingChange}
         />
