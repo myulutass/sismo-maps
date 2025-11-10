@@ -56,7 +56,7 @@ const FaultLinesLayer: React.FC<FaultLinesLayerProps> = ({ onLoadingChange }) =>
                 return;
             }
 
-            const chunkSize = 200;
+            const chunkSize = 300;
             const delayMs = 5;
             let currentIndex = 0;
             const totalFeatures = fullData.features.length;
