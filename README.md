@@ -1,9 +1,11 @@
 # sismo-maps
-
-A project using TypeScript.
+Ionic project with custom map layers.
 
 ## Description
-Briefly describe the purpose of this project and what problems it solves here.
+Main diffrences from the Official SismoAlarm App is;
+  * Bottom modal to open and close layers
+  * Layer info screens inside the modal
+  * Chunking for fault lines layer since its very large to load at once
 
 ## Setup
 1. Clone the repository.
@@ -13,8 +15,3 @@ npm install
 ```
 3. Run development server or build as needed.
 
-## Usage
-Share instructions for running, building, or using the project here.
-
-## License
-Specify the license for this project if applicable.
