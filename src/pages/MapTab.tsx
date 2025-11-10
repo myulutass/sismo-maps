@@ -9,19 +9,17 @@ import {
   IonFabButton,
   IonIcon,
   IonModal,
-  IonButtons,
   IonButton,
   useIonToast,
 } from '@ionic/react';
 import {
-  close,
   layersOutline,
   globeOutline,
   contractOutline,
   analyticsOutline,
   alertCircleOutline
 } from 'ionicons/icons';
-import './Tab2.css';
+import './MapTab.css';
 import MapComponent from '../components/map/MapComponent';
 import MapLayerButton from '../components/map/MapLayerButton';
 
@@ -36,7 +34,7 @@ import FaultLinesInfo from '../components/map/layerInfo/FaultLinesInfo';
 import PlateBoundariesInfo from '../components/map/layerInfo/PlateBoundariesInfo';
 import TectonicPlatesInfo from '../components/map/layerInfo/TectonicPatesInfo';
 
-const Tab2: React.FC = () => {
+const MapTab: React.FC = () => {
 
   const [isLegendOpen, setIsLegendOpen] = useState(false);
   const [layerVisibility, setLayerVisibility] = useState({
@@ -109,7 +107,7 @@ const Tab2: React.FC = () => {
         {layerVisibility.faultLines && (
           <div style={{
             position: 'absolute',
-            bottom: '8%',
+            top: '8%',
             left: '10%',
             right: '10%',
             backgroundColor: 'rgba(255, 255, 255, 0.8)',
@@ -142,23 +140,12 @@ const Tab2: React.FC = () => {
           ref={modalRef}
           isOpen={isLegendOpen}
           onDidDismiss={() => setIsLegendOpen(false)}
-          initialBreakpoint={0.34}
-          breakpoints={[0, 0.34, 1]}
+          initialBreakpoint={0.3}
+          breakpoints={[0, 0.3, 1]}
           handleBehavior="cycle"
           color='#050404'
         >
-          <IonHeader>
-            <IonToolbar color={'#050404'}>
-              <IonTitle style={{ fontSize: '0.72rem', color: '#f7f1eb' }}>
-                Harita Katmanları
-              </IonTitle>
-              <IonButtons slot="end">
-                <IonButton onClick={() => setIsLegendOpen(false)}>
-                  <IonIcon icon={close} />
-                </IonButton>
-              </IonButtons>
-            </IonToolbar>
-          </IonHeader>
+
           <IonContent className="ion-padding">
             {/* Layer Toggles */}
             <div style={{
@@ -233,4 +220,4 @@ const Tab2: React.FC = () => {
   );
 };
 
-export default Tab2;
+export default MapTab;

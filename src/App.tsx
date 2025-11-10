@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
   IonIcon,
@@ -11,7 +11,7 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { ellipse } from 'ionicons/icons';
-import Tab2 from './pages/Tab2';
+import MapTab from './pages/MapTab';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -51,13 +51,17 @@ const App: React.FC = () => (
       <IonTabs>
         <IonRouterOutlet>
 
-          <Route exact path="/tab2">
-            <Tab2 />
+          <Route exact path="/maptab">
+            <MapTab />
           </Route>
+          <Route exact path="/">
+            <Redirect to="/maptab" />
+          </Route>
+
 
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="tab2" href="/tab2">
+          <IonTabButton tab="maptab" href="/maptab">
             <IonIcon aria-hidden="true" icon={ellipse} />
             <IonLabel>Map Tab</IonLabel>
           </IonTabButton>

@@ -16,7 +16,6 @@
   "dependencies": {
     "@capacitor/android": "^7.4.3",
     "@capacitor/core": "^7.4.3",
-    "@capacitor/google-maps": "^7.2.0",
     "@ionic/react": "^8.7.6",
     "@ionic/react-router": "^8.5.0",
     "@types/react-router": "^5.1.20",
