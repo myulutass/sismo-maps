@@ -91,6 +91,8 @@ const MapTab: React.FC = () => {
     }
   };
 
+
+
   return (
     <IonPage>
       <IonHeader>
@@ -213,6 +215,16 @@ const MapTab: React.FC = () => {
                 <TectonicPlatesInfo />
               </SwiperSlide>
             </Swiper>
+            <div style={{ padding: '12px 8px' }}>
+              <IonButton
+
+                expand="block"
+                color='dark'
+                fill='outline'
+                onClick={() => setIsLegendOpen(false)}              >
+                Haritaya Dön
+              </IonButton>
+            </div>
           </IonContent>
         </IonModal>
       </IonContent >
