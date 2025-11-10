@@ -33,7 +33,7 @@ interface FaultLineGeoJSON {
 export const loadFaultLines = async (): Promise<Polyline[]> => {
     try {
         // Ensure this path is correct for your /public folder structure
-        const response = await fetch('/assets/GeoJSON/fl.geojson');
+        const response = await fetch('/assets/GeoJSON/faultLines.geojson');
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }

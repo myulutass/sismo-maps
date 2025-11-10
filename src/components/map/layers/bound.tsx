@@ -51,7 +51,7 @@ const getColorFromBoundaryName = (name: string): string => {
 export const loadBoundaries = async (): Promise<MapPolyline[]> => {
     try {
         // Using the fraxen/tectonicplates data file as you intended
-        const response = await fetch('/assets/GeoJSON/PB2002_boundaries.json');
+        const response = await fetch('/assets/GeoJSON/boundaries.json');
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }

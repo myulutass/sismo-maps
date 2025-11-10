@@ -34,7 +34,7 @@ interface PlateGeoJSON {
  */
 export const loadTectonicPlates = async (): Promise<Polygon[]> => {
     try {
-        const response = await fetch('/assets/GeoJSON/PB2002_plates.json');
+        const response = await fetch('/assets/GeoJSON/tectonicPlates.json');
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
