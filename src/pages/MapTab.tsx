@@ -140,8 +140,8 @@ const MapTab: React.FC = () => {
           ref={modalRef}
           isOpen={isLegendOpen}
           onDidDismiss={() => setIsLegendOpen(false)}
-          initialBreakpoint={0.3}
-          breakpoints={[0, 0.3, 1]}
+          initialBreakpoint={0.26}
+          breakpoints={[0, 0.26, 1]}
           handleBehavior="cycle"
           color='#050404'
         >
