@@ -109,7 +109,7 @@ const MapTab: React.FC = () => {
         {layerVisibility.faultLines && (
           <div style={{
             position: 'absolute',
-            top: '8%',
+            top: '10%',
             left: '10%',
             right: '10%',
             backgroundColor: 'rgba(255, 255, 255, 0.8)',
@@ -126,7 +126,7 @@ const MapTab: React.FC = () => {
               rel="noopener noreferrer"
               style={{ color: '#0083ca', textDecoration: 'none', fontSize: '0.6rem' }}
             >
-              Zelenin, E., Bachmanov, D., Garipova, S., Trifonov, V., and Kozhurin, A.: The Active Faults of Eurasia Database (AFEAD): the ontology and design behind the continental-scale dataset, Earth Syst. Sci. Data.
+              Zelenin, E., Bachmanov, D., Garipova, S., Trifonov, V., and Kozhurin, A.: AFEAD: Earth Syst. Sci. Data.
             </a>
           </div>
         )}
