@@ -1,0 +1,17 @@
+ion-modal {
+
+    /* Set the color for the ACTIVE dot */
+    --swiper-pagination-color: #f7f1eb;
+
+    /* Set the color for the INACTIVE dots */
+    --swiper-pagination-bullet-inactive-color: #ffffff;
+
+    /* Set the opacity for the INACTIVE dots */
+    --swiper-pagination-bullet-inactive-opacity: 0.4;
+
+    /* Change the size of the dots if desired */
+    --swiper-pagination-bullet-size: 8px;
+
+    /* Add some space between the slider content and the dots */
+    --swiper-pagination-bottom: 8px;
+}
